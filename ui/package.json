@@ -1,0 +1,6 @@
+{
+  "name": "namivision-ui",
+  "private": true,
+  "type": "module",
+  "description": "NamiVision browser UI (ES modules, no build step)"
+}

@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="ja" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <title>NamiVision</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <script src="js/boot.js"></script>
+    <link rel="stylesheet" href="styles/tokens.css" />
+    <link rel="stylesheet" href="styles/app.css" />
+  </head>
+  <body>
+    <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <symbol id="icon-logo" viewBox="0 0 24 24">
+          <path d="M2.5 14.5c1.9 0 2.5-7 4.6-7s2.7 9 4.8 9 2.5-7 4.6-7 2.3 4 4.5 4" />
+          <path d="M2.5 18.5h19" opacity=".45" />
+        </symbol>
+        <symbol id="icon-folder" viewBox="0 0 24 24">
+          <path d="M3.5 6.5h5l2 2h10v9.5a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 18Z" />
+          <path d="M3.5 9.5h17" />
+        </symbol>
+        <symbol id="icon-save" viewBox="0 0 24 24">
+          <path d="M5 3.5h11l3.5 3.5v13.5H5Z" />
+          <path d="M8 3.5v6h8v-6M8 20.5v-6h8v6" />
+        </symbol>
+        <symbol id="icon-settings" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="3" />
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1.08-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1.08 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z" />
+        </symbol>
+        <symbol id="icon-help" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="8.5" />
+          <path d="M9.3 9.2a2.9 2.9 0 1 1 4.2 2.6c-.9.5-1.5 1.1-1.5 2.1v.2" />
+          <path d="M12 17.1v.1" />
+        </symbol>
+        <symbol id="icon-play" viewBox="0 0 24 24">
+          <path d="M8 5.5v13l11-6.5Z" fill="currentColor" stroke="none" />
+        </symbol>
+        <symbol id="icon-pause" viewBox="0 0 24 24">
+          <path d="M8 5.5h3v13H8zM13 5.5h3v13h-3z" fill="currentColor" stroke="none" />
+        </symbol>
+        <symbol id="icon-stop" viewBox="0 0 24 24">
+          <rect x="6.5" y="6.5" width="11" height="11" rx="1.2" fill="currentColor" stroke="none" />
+        </symbol>
+        <symbol id="icon-volume" viewBox="0 0 24 24">
+          <path d="M4 9.5h3.5L12 5.5v13L7.5 14.5H4Z" />
+          <path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" />
+        </symbol>
+        <symbol id="icon-volume-low" viewBox="0 0 24 24">
+          <path d="M4 9.5h3.5L12 5.5v13L7.5 14.5H4Z" />
+          <path d="M15.5 9a4 4 0 0 1 0 6" />
+        </symbol>
+        <symbol id="icon-volume-mute" viewBox="0 0 24 24">
+          <path d="M4 9.5h3.5L12 5.5v13L7.5 14.5H4Z" />
+          <path d="m16 9.5 5 5M21 9.5l-5 5" />
+        </symbol>
+        <symbol id="icon-metronome" viewBox="0 0 24 24">
+          <path d="M9 4h6l3.5 16h-13Z" />
+          <path d="m12 17 4.2-9" />
+          <circle cx="16.6" cy="7.4" r="1.1" fill="currentColor" stroke="none" />
+        </symbol>
+        <symbol id="icon-chevron-down" viewBox="0 0 24 24">
+          <path d="m7 9.5 5 5 5-5" />
+        </symbol>
+        <symbol id="icon-close" viewBox="0 0 24 24">
+          <path d="m6.5 6.5 11 11M17.5 6.5l-11 11" />
+        </symbol>
+        <symbol id="icon-warning" viewBox="0 0 24 24">
+          <path d="M12 3.5 21 20H3Z" />
+          <path d="M12 9v5M12 17.2v.1" />
+        </symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="8.5" />
+          <path d="m8.2 12.2 2.5 2.5 5.2-5.4" />
+        </symbol>
+        <symbol id="icon-info" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="8.5" />
+          <path d="M12 10.5v6M12 7.3v.1" />
+        </symbol>
+        <symbol id="icon-error" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="8.5" />
+          <path d="m9.2 9.2 5.6 5.6M14.8 9.2l-5.6 5.6" />
+        </symbol>
+        <symbol id="icon-download" viewBox="0 0 24 24">
+          <path d="M12 3.5v11M7.5 10.5 12 15l4.5-4.5M4.5 19.5h15" />
+        </symbol>
+        <symbol id="icon-grid" viewBox="0 0 24 24">
+          <path d="M4 4v16M10 4v16M16 4v16M22 4v16" opacity=".55" />
+          <path d="M2.5 8.5h19M2.5 15.5h19" />
+        </symbol>
+        <symbol id="icon-flag" viewBox="0 0 24 24">
+          <path d="M6 21V3.5" />
+          <path d="M6 4h11l-2.2 3.5L17 11H6" />
+        </symbol>
+        <symbol id="icon-waveform" viewBox="0 0 24 24">
+          <path d="M3 12h2.2M7 8v8M10.2 5v14M13.4 9.5v5M16.6 6.5v11M19.8 10v4M23 12h-1.2" />
+        </symbol>
+        <symbol id="icon-fit" viewBox="0 0 24 24">
+          <path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" />
+        </symbol>
+        <symbol id="icon-zoom-in" viewBox="0 0 24 24">
+          <circle cx="10.5" cy="10.5" r="6.5" />
+          <path d="m15.5 15.5 4.5 4.5M10.5 7.5v6M7.5 10.5h6" />
+        </symbol>
+        <symbol id="icon-zoom-out" viewBox="0 0 24 24">
+          <circle cx="10.5" cy="10.5" r="6.5" />
+          <path d="m15.5 15.5 4.5 4.5M7.5 10.5h6" />
+        </symbol>
+        <symbol id="icon-sliders" viewBox="0 0 24 24">
+          <path d="M4 7h10M18 7h2M4 17h4M12 17h8" />
+          <circle cx="16" cy="7" r="2" />
+          <circle cx="10" cy="17" r="2" />
+        </symbol>
+        <symbol id="icon-refresh" viewBox="0 0 24 24">
+          <path d="M20 12a8 8 0 1 1-2.4-5.7M20 4.5V10h-5.5" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <div id="app" class="app-shell" aria-busy="false">
+      <header class="app-header">
+        <div class="brand">
+          <span class="logo-mark" aria-hidden="true">
+            <svg class="icon logo-icon"><use href="#icon-logo"></use></svg>
+          </span>
+          <span class="brand-name">NamiVision</span>
+        </div>
+        <div class="header-divider" aria-hidden="true"></div>
+        <div id="file-chip" class="file-chip" data-i18n-title="header.noAudioHint">
+          <span class="file-dot" aria-hidden="true"></span>
+          <span id="file-name" class="file-chip-name" data-i18n="header.noAudio">No audio</span>
+          <span id="file-duration" class="file-chip-duration mono"></span>
+        </div>
+        <div class="header-spacer"></div>
+        <nav class="header-actions" data-i18n-aria="header.actions">
+          <button id="open-btn" type="button" class="btn btn-ghost header-btn" data-i18n-title="header.open">
+            <svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>
+            <span class="btn-label" data-i18n="header.open">Open</span>
+          </button>
+          <div class="menu-anchor">
+            <button id="project-btn" type="button" class="btn btn-ghost header-btn" aria-haspopup="menu" aria-expanded="false" data-i18n-title="header.project">
+              <svg class="icon" aria-hidden="true"><use href="#icon-save"></use></svg>
+              <span class="btn-label" data-i18n="header.project">Project</span>
+              <svg class="icon icon-chevron" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+            </button>
+          </div>
+          <button id="settings-btn" type="button" class="btn btn-ghost header-btn" data-i18n-title="header.settings">
+            <svg class="icon" aria-hidden="true"><use href="#icon-settings"></use></svg>
+            <span class="btn-label" data-i18n="header.settings">Settings</span>
+          </button>
+          <button id="help-btn" type="button" class="btn btn-ghost header-btn" data-i18n-title="header.help">
+            <svg class="icon" aria-hidden="true"><use href="#icon-help"></use></svg>
+            <span class="btn-label" data-i18n="header.help">Help</span>
+          </button>
+        </nav>
+      </header>
+
+      <div id="missing-banner" class="missing-banner" role="alert" hidden>
+        <svg class="icon banner-icon" aria-hidden="true"><use href="#icon-warning"></use></svg>
+        <div class="banner-copy">
+          <strong data-i18n="project.missingTitle">Audio file not found</strong>
+          <span id="missing-path" class="banner-path mono"></span>
+        </div>
+        <button id="relink-btn" type="button" class="btn btn-secondary banner-btn">
+          <svg class="icon" aria-hidden="true"><use href="#icon-refresh"></use></svg>
+          <span data-i18n="project.relink">Relink audio</span>
+        </button>
+      </div>
+
+      <section class="transport" data-i18n-aria="transport.label">
+        <button id="play-btn" type="button" class="btn btn-primary play-btn" aria-pressed="false" disabled data-i18n-title="transport.noAudio">
+          <svg id="play-icon" class="icon" aria-hidden="true"><use href="#icon-play"></use></svg>
+          <span id="play-label" data-i18n="transport.play">Play</span>
+        </button>
+        <button id="stop-btn" type="button" class="btn btn-icon transport-icon" data-i18n-title="transport.stop" data-i18n-aria="transport.stop" disabled>
+          <svg class="icon" aria-hidden="true"><use href="#icon-stop"></use></svg>
+        </button>
+        <div class="transport-time" data-i18n-title="transport.time">
+          <span id="time-current" class="mono">00:00.00</span>
+          <span class="time-sep">/</span>
+          <span id="time-total" class="mono time-total">00:00.00</span>
+        </div>
+        <div class="seek-wrap">
+          <input id="seek" class="range range-seek" type="range" min="0" max="1" step="0.01" value="0" disabled data-i18n-aria="transport.seek" />
+        </div>
+        <div class="volume-group">
+          <button id="volume-btn" type="button" class="btn btn-icon transport-icon" data-i18n-title="transport.mute" data-i18n-aria="transport.mute">
+            <svg id="volume-icon" class="icon" aria-hidden="true"><use href="#icon-volume"></use></svg>
+          </button>
+          <input id="volume" class="range range-volume" type="range" min="0" max="1" step="0.01" value="0.8" data-i18n-aria="transport.volume" />
+        </div>
+        <button id="tempo-chip" type="button" class="tempo-chip is-unset" data-i18n-title="transport.tempo">
+          <svg class="icon" aria-hidden="true"><use href="#icon-metronome"></use></svg>
+          <span id="tempo-chip-text" data-i18n="transport.tempoNotSet">Tempo not set</span>
+        </button>
+      </section>
+
+      <section class="workspace">
+        <div class="ruler-row">
+          <div class="ruler-corner" aria-hidden="true"></div>
+          <div class="ruler-view">
+            <canvas id="ruler-canvas" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" data-i18n-aria="ruler.label"></canvas>
+          </div>
+        </div>
+        <div class="lanes-row">
+          <div id="lane-headers" class="lane-headers"></div>
+          <div id="lane-view" class="lane-view">
+            <canvas id="lane-canvas" tabindex="0" role="application" data-i18n-aria="lanes.label"></canvas>
+            <div id="empty-state" class="empty-state">
+              <div class="empty-icon" aria-hidden="true">
+                <svg class="icon"><use href="#icon-waveform"></use></svg>
+              </div>
+              <h2 class="empty-title" data-i18n="empty.title">Drop an audio file</h2>
+              <p class="empty-formats mono" data-i18n="empty.formats">MP3 · WAV · FLAC · OGG</p>
+              <p class="empty-note" data-i18n="empty.minLength">Audio 5 seconds or longer</p>
+              <button id="empty-open-btn" type="button" class="btn btn-secondary empty-open">
+                <svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>
+                <span data-i18n="empty.open">Open file</span>
+              </button>
+              <p class="empty-hint" data-i18n="empty.hint">or choose a file with Open</p>
+            </div>
+            <div id="loading-overlay" class="loading-overlay" role="status" aria-live="polite" data-i18n-aria="loading.aria" hidden>
+              <div class="loading-panel">
+                <div class="loading-head">
+                  <span class="loading-title" data-i18n="loading.title">Analyzing</span>
+                  <span id="loading-percent" class="loading-percent mono">0%</span>
+                </div>
+                <div class="progress-track"><div id="loading-bar" class="progress-bar"></div></div>
+                <div class="loading-phases">
+                  <span class="loading-phase is-active" data-phase="decode" data-i18n="loading.phase.decode">Decoding</span>
+                  <span class="loading-phase" data-phase="fft" data-i18n="loading.phase.fft">FFT analysis</span>
+                  <span class="loading-phase" data-phase="bands" data-i18n="loading.phase.bands">Band envelopes</span>
+                </div>
+                <p class="loading-note" data-i18n="loading.note">Analysis cannot be canceled. Please wait.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="hscroll" class="hscroll" hidden>
+          <div id="hscroll-thumb" class="hscroll-thumb" role="scrollbar" tabindex="0" aria-controls="lane-view" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0"></div>
+        </div>
+      </section>
+
+      <footer class="status-bar" data-i18n-aria="status.label">
+        <div class="status-group status-primary">
+          <span id="status-sr" class="status-val mono" data-i18n-title="status.sampleRate">—</span>
+          <span class="status-sep" aria-hidden="true"></span>
+          <span id="status-ch" class="status-val mono" data-i18n-title="status.channels">—</span>
+          <span class="status-sep" aria-hidden="true"></span>
+          <span id="status-duration" class="status-val mono" data-i18n-title="status.duration">—</span>
+          <span class="status-sep status-secondary" aria-hidden="true"></span>
+          <span id="status-analysis" class="status-val mono status-secondary" data-i18n-title="status.analysis">—</span>
+        </div>
+        <div class="status-group status-secondary-group">
+          <span id="status-zoom" class="status-val mono" data-i18n-title="status.zoom">—</span>
+          <span class="status-sep" aria-hidden="true"></span>
+          <span id="status-lane" class="status-val" data-i18n-title="status.lane">—</span>
+        </div>
+        <div class="status-hint" data-i18n="status.hint">Space: play/pause · Right-click a lane for options</div>
+      </footer>
+    </div>
+
+    <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="false"></div>
+    <div id="menu-root"></div>
+
+    <dialog id="tempo-dialog" class="dlg dlg-tempo" aria-labelledby="tempo-title">
+      <div class="dlg-head">
+        <h2 id="tempo-title" class="dlg-title" data-i18n="tempo.title">Tempo settings</h2>
+        <button id="tempo-close" type="button" class="btn btn-icon dlg-close" data-i18n-title="common.close" data-i18n-aria="common.close">
+          <svg class="icon" aria-hidden="true"><use href="#icon-close"></use></svg>
+        </button>
+      </div>
+      <div class="dlg-body">
+        <div class="field-row">
+          <label class="field-label" for="tempo-bpm" data-i18n="tempo.bpm">BPM</label>
+          <div class="tempo-bpm-row">
+            <div class="stepper">
+              <button id="bpm-dec" type="button" class="btn btn-icon stepper-btn" data-i18n-title="tempo.decrease" data-i18n-aria="tempo.decrease">−</button>
+              <input id="tempo-bpm" class="input input-number mono" type="number" min="20" max="400" step="0.1" inputmode="decimal" autofocus />
+              <button id="bpm-inc" type="button" class="btn btn-icon stepper-btn" data-i18n-title="tempo.increase" data-i18n-aria="tempo.increase">+</button>
+            </div>
+            <button id="tap-btn" type="button" class="btn btn-secondary tap-btn">
+              <svg class="icon" aria-hidden="true"><use href="#icon-metronome"></use></svg>
+              <span data-i18n="tempo.tap">Tap tempo</span>
+            </button>
+          </div>
+        </div>
+        <p class="hint" data-i18n="tempo.tapHint">Tap 4 or more times to average the tempo</p>
+
+        <div class="field-row">
+          <span id="tempo-meter-label" class="field-label" data-i18n="tempo.meter">Meter</span>
+          <div class="segmented" role="group" aria-labelledby="tempo-meter-label">
+            <label class="seg"><input type="radio" name="tempo-meter" value="2" /><span>2/4</span></label>
+            <label class="seg"><input type="radio" name="tempo-meter" value="3" /><span>3/4</span></label>
+            <label class="seg"><input type="radio" name="tempo-meter" value="4" checked /><span>4/4</span></label>
+            <label class="seg"><input type="radio" name="tempo-meter" value="6" /><span>6/4</span></label>
+            <label class="seg"><input type="radio" name="tempo-meter" value="8" /><span>8/4</span></label>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <label class="field-label" for="tempo-bar-start" data-i18n="tempo.barStart">Bar start (seconds)</label>
+          <div class="inline-row">
+            <input id="tempo-bar-start" class="input input-number mono" type="number" min="0" step="0.001" inputmode="decimal" />
+            <button id="use-playhead-btn" type="button" class="btn btn-secondary">
+              <svg class="icon" aria-hidden="true"><use href="#icon-flag"></use></svg>
+              <span data-i18n="tempo.usePlayhead">Use playhead</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <span id="tempo-sub-label" class="field-label" data-i18n="tempo.subdivision">Subdivision</span>
+          <div class="segmented segmented-small" role="group" aria-labelledby="tempo-sub-label">
+            <label class="seg"><input type="radio" name="tempo-sub" value="1" checked /><span>1</span></label>
+            <label class="seg"><input type="radio" name="tempo-sub" value="2" /><span>2</span></label>
+            <label class="seg"><input type="radio" name="tempo-sub" value="4" /><span>4</span></label>
+          </div>
+        </div>
+
+        <div class="switch-stack">
+          <label class="switch-row">
+            <span class="switch-label" data-i18n="tempo.showGrid">Show grid</span>
+            <span class="switch"><input id="tempo-show-grid" type="checkbox" checked /><span class="switch-track"></span></span>
+          </label>
+          <label class="switch-row">
+            <span class="switch-label" data-i18n="tempo.snap">Snap to grid</span>
+            <span class="switch"><input id="tempo-snap" type="checkbox" /><span class="switch-track"></span></span>
+          </label>
+        </div>
+      </div>
+      <div class="dlg-foot">
+        <p id="tempo-error" class="field-error" role="alert" hidden></p>
+        <div class="dlg-actions">
+          <button id="tempo-cancel" type="button" class="btn btn-secondary" data-i18n="tempo.cancel">Cancel</button>
+          <button id="tempo-apply" type="button" class="btn btn-primary" data-i18n="tempo.apply">Apply</button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="settings-dialog" class="dlg dlg-settings" aria-labelledby="settings-title">
+      <div class="dlg-head">
+        <h2 id="settings-title" class="dlg-title" data-i18n="settings.title">Settings</h2>
+        <button id="settings-close" type="button" class="btn btn-icon dlg-close" data-i18n-title="common.close" data-i18n-aria="common.close">
+          <svg class="icon" aria-hidden="true"><use href="#icon-close"></use></svg>
+        </button>
+      </div>
+      <div class="settings-body">
+        <nav class="settings-nav" role="tablist" aria-orientation="vertical" data-i18n-aria="settings.nav">
+          <button id="tab-general" type="button" class="settings-tab is-active" role="tab" aria-selected="true" aria-controls="pane-general" data-pane="general">
+            <span data-i18n="settings.tab.general">General</span>
+          </button>
+          <button id="tab-playback" type="button" class="settings-tab" role="tab" aria-selected="false" aria-controls="pane-playback" data-pane="playback">
+            <span data-i18n="settings.tab.playback">Playback</span>
+          </button>
+          <button id="tab-analysis" type="button" class="settings-tab" role="tab" aria-selected="false" aria-controls="pane-analysis" data-pane="analysis">
+            <span data-i18n="settings.tab.analysis">Analysis</span>
+          </button>
+          <button id="tab-output" type="button" class="settings-tab" role="tab" aria-selected="false" aria-controls="pane-output" data-pane="output">
+            <span data-i18n="settings.tab.output">Output</span>
+          </button>
+          <button id="tab-about" type="button" class="settings-tab" role="tab" aria-selected="false" aria-controls="pane-about" data-pane="about">
+            <span data-i18n="settings.tab.about">About</span>
+          </button>
+        </nav>
+        <div class="settings-panes">
+          <section id="pane-general" class="settings-pane is-active" role="tabpanel" aria-labelledby="tab-general">
+            <div class="field">
+              <label class="field-label" for="set-lang" data-i18n="settings.language">Language</label>
+              <select id="set-lang" class="input select">
+                <option value="ja" data-i18n="settings.langJa">日本語</option>
+                <option value="en" data-i18n="settings.langEn">English</option>
+              </select>
+            </div>
+            <div class="field">
+              <span id="set-theme-label" class="field-label" data-i18n="settings.theme">Theme</span>
+              <div class="segmented" role="group" aria-labelledby="set-theme-label">
+                <label class="seg"><input type="radio" name="set-theme" value="dark" checked /><span data-i18n="settings.themeDark">Dark</span></label>
+                <label class="seg"><input type="radio" name="set-theme" value="light" /><span data-i18n="settings.themeLight">Light</span></label>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="set-scale" data-i18n="settings.scale">UI scale</label>
+              <div class="range-row">
+                <input id="set-scale" class="range" type="range" min="80" max="150" step="5" value="100" />
+                <output id="set-scale-out" class="range-out mono" for="set-scale">100%</output>
+              </div>
+            </div>
+          </section>
+
+          <section id="pane-playback" class="settings-pane" role="tabpanel" aria-labelledby="tab-playback" hidden>
+            <div class="field">
+              <label class="field-label" for="set-volume" data-i18n="settings.volume">Volume</label>
+              <div class="range-row">
+                <input id="set-volume" class="range" type="range" min="0" max="1" step="0.01" value="0.8" />
+                <output id="set-volume-out" class="range-out mono" for="set-volume">80%</output>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="set-gain" data-i18n="settings.gain">Waveform gain</label>
+              <div class="range-row">
+                <input id="set-gain" class="range" type="range" min="0.25" max="4" step="0.05" value="1" />
+                <output id="set-gain-out" class="range-out mono" for="set-gain">×1</output>
+              </div>
+            </div>
+            <label class="switch-row">
+              <span class="switch-label" data-i18n="settings.follow">Follow playhead</span>
+              <span class="switch"><input id="set-follow" type="checkbox" checked /><span class="switch-track"></span></span>
+            </label>
+          </section>
+
+          <section id="pane-analysis" class="settings-pane" role="tabpanel" aria-labelledby="tab-analysis" hidden>
+            <div class="field">
+              <span id="set-fft-label" class="field-label" data-i18n="settings.fft">FFT size</span>
+              <div class="segmented" role="group" aria-labelledby="set-fft-label">
+                <label class="seg"><input type="radio" name="set-fft" value="1024" /><span>1024</span></label>
+                <label class="seg"><input type="radio" name="set-fft" value="2048" checked /><span>2048</span></label>
+                <label class="seg"><input type="radio" name="set-fft" value="4096" /><span>4096</span></label>
+              </div>
+              <p class="hint" data-i18n="settings.fftHint">Changing this re-analyzes the audio</p>
+            </div>
+            <div class="field">
+              <span id="set-band-count-label" class="field-label" data-i18n="settings.bandCount">Band count</span>
+              <div class="segmented segmented-small" role="group" aria-labelledby="set-band-count-label">
+                <label class="seg"><input type="radio" name="set-band-count" value="1" /><span>1</span></label>
+                <label class="seg"><input type="radio" name="set-band-count" value="2" /><span>2</span></label>
+                <label class="seg"><input type="radio" name="set-band-count" value="3" /><span>3</span></label>
+                <label class="seg"><input type="radio" name="set-band-count" value="4" checked /><span>4</span></label>
+              </div>
+            </div>
+            <div class="field">
+              <span class="field-label" data-i18n="settings.crossovers">Crossover frequencies (Hz)</span>
+              <div class="crossover-grid">
+                <label class="crossover-item"><span data-i18n="settings.crossover1">Crossover 1</span><input id="set-cross-1" class="input input-number mono" type="number" min="20" max="20000" step="1" /></label>
+                <label class="crossover-item"><span data-i18n="settings.crossover2">Crossover 2</span><input id="set-cross-2" class="input input-number mono" type="number" min="20" max="20000" step="1" /></label>
+                <label class="crossover-item"><span data-i18n="settings.crossover3">Crossover 3</span><input id="set-cross-3" class="input input-number mono" type="number" min="20" max="20000" step="1" /></label>
+              </div>
+              <p id="set-cross-error" class="field-error" role="alert" hidden></p>
+            </div>
+            <div class="field">
+              <label class="field-label" for="set-sensitivity" data-i18n="settings.sensitivity">Onset sensitivity</label>
+              <div class="range-row">
+                <input id="set-sensitivity" class="range" type="range" min="0" max="1" step="0.01" value="0.5" />
+                <output id="set-sensitivity-out" class="range-out mono" for="set-sensitivity">0.50</output>
+              </div>
+            </div>
+          </section>
+
+          <section id="pane-output" class="settings-pane" role="tabpanel" aria-labelledby="tab-output" hidden>
+            <div class="field">
+              <span id="set-delimiter-label" class="field-label" data-i18n="settings.delimiter">Delimiter</span>
+              <div class="segmented" role="group" aria-labelledby="set-delimiter-label">
+                <label class="seg"><input type="radio" name="set-delimiter" value="," checked /><span data-i18n="settings.comma">Comma (,)</span></label>
+                <label class="seg"><input type="radio" name="set-delimiter" value=";" /><span data-i18n="settings.semicolon">Semicolon (;)</span></label>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="set-decimals" data-i18n="settings.decimals">Decimal places</label>
+              <select id="set-decimals" class="input select select-narrow">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+            </div>
+            <label class="switch-row">
+              <span class="switch-label" data-i18n="settings.includeUndetected">Include undetected beats</span>
+              <span class="switch"><input id="set-undetected" type="checkbox" checked /><span class="switch-track"></span></span>
+            </label>
+          </section>
+
+          <section id="pane-about" class="settings-pane" role="tabpanel" aria-labelledby="tab-about" hidden>
+            <dl class="about-list">
+              <dt data-i18n="settings.about.version">Version</dt>
+              <dd id="about-version" class="mono">—</dd>
+              <dt data-i18n="settings.about.dataDir">Data directory</dt>
+              <dd id="about-datadir" class="mono about-path">—</dd>
+              <dt data-i18n="settings.about.portable">Portable</dt>
+              <dd id="about-portable">—</dd>
+              <dt data-i18n="settings.about.license">License</dt>
+              <dd data-i18n="settings.about.licenseText">MIT License</dd>
+            </dl>
+          </section>
+        </div>
+      </div>
+      <div class="dlg-foot settings-foot">
+        <p class="hint" data-i18n="settings.autoSave">Changes save automatically</p>
+        <div class="dlg-actions">
+          <button id="settings-close-2" type="button" class="btn btn-secondary" data-i18n="settings.close">Close</button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="help-dialog" class="dlg dlg-help" aria-labelledby="help-title">
+      <div class="dlg-head">
+        <h2 id="help-title" class="dlg-title" data-i18n="help.title">Help</h2>
+        <button id="help-close" type="button" class="btn btn-icon dlg-close" data-i18n-title="common.close" data-i18n-aria="common.close">
+          <svg class="icon" aria-hidden="true"><use href="#icon-close"></use></svg>
+        </button>
+      </div>
+      <div class="dlg-body help-body">
+        <section>
+          <h3 class="section-title" data-i18n="help.shortcuts">Keyboard shortcuts</h3>
+          <table class="shortcut-table">
+            <tbody>
+              <tr><th scope="row"><kbd data-i18n="help.key.space">Space</kbd></th><td data-i18n="help.action.space">Play / pause</td></tr>
+              <tr><th scope="row"><kbd data-i18n="help.key.stop">S</kbd></th><td data-i18n="help.action.stop">Stop (return to start)</td></tr>
+              <tr><th scope="row"><kbd data-i18n="help.key.arrows">← / →</kbd></th><td data-i18n="help.action.arrows">Seek 1 s (Shift: 5 s)</td></tr>
+              <tr><th scope="row"><kbd data-i18n="help.key.homeEnd">Home / End</kbd></th><td data-i18n="help.action.homeEnd">Jump to start / end</td></tr>
+              <tr><th scope="row"><kbd data-i18n="help.key.zoom">+ / -</kbd></th><td data-i18n="help.action.zoom">Zoom in / out</td></tr>
+              <tr><th scope="row"><kbd data-i18n="help.key.wheel">Ctrl + wheel</kbd></th><td data-i18n="help.action.wheel">Zoom at cursor</td></tr>
+              <tr><th scope="row"><kbd data-i18n="help.key.esc">Esc</kbd></th><td data-i18n="help.action.esc">Close menu / dialog</td></tr>
+            </tbody>
+          </table>
+        </section>
+        <section>
+          <h3 class="section-title" data-i18n="help.mathTitle">Beat deviation math</h3>
+          <p class="help-copy" data-i18n="help.mathBody"></p>
+        </section>
+        <section>
+          <h3 class="section-title" data-i18n="help.csvTitle">CSV columns</h3>
+          <p class="help-copy" data-i18n="help.csvBody"></p>
+        </section>
+        <section>
+          <h3 class="section-title" data-i18n="help.aboutTitle">About NamiVision</h3>
+          <p class="help-copy" data-i18n="help.aboutBody"></p>
+        </section>
+      </div>
+      <div class="dlg-foot">
+        <div class="dlg-actions">
+          <button id="help-close-2" type="button" class="btn btn-secondary" data-i18n="help.close">Close</button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="confirm-dialog" class="dlg dlg-confirm" aria-labelledby="confirm-title">
+      <div class="dlg-head">
+        <h2 id="confirm-title" class="dlg-title" data-i18n="common.confirm">Confirm</h2>
+      </div>
+      <div class="dlg-body">
+        <p id="confirm-message" class="confirm-message"></p>
+      </div>
+      <div class="dlg-foot">
+        <div class="dlg-actions">
+          <button id="confirm-cancel" type="button" class="btn btn-secondary" data-i18n="common.cancel">Cancel</button>
+          <button id="confirm-ok" type="button" class="btn btn-primary" data-i18n="common.confirm">Confirm</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>

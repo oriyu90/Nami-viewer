@@ -1,0 +1,26 @@
+# Rust / Tauri build output
+/target/
+/gen/
+
+# Release artifacts (published as GitHub Release assets)
+/dist/
+
+# Local QA captures and generated fixtures
+/shots/
+/selftest_*
+/fixtures/*.wav
+/fixtures/*.mp3
+/fixtures/*.flac
+/fixtures/*.ogg
+/fixtures/*.oga
+
+# Local skill checkouts used during development
+/web-design-engineer-skills/
+/win-dev-skills/
+
+# Editor / OS noise
+.vscode/
+.idea/
+*.log
+Thumbs.db
+desktop.ini

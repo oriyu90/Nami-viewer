@@ -1,0 +1,114 @@
+/* NamiVision design tokens — studio measurement instrument */
+
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --canvas: #0e1116;
+  --surface: #151a21;
+  --surface-2: #1b222b;
+  --surface-3: #222b36;
+  --rule: #26303c;
+  --rule-strong: #354354;
+  --ink: #e8edf4;
+  --muted: #93a1b3;
+  --muted-2: #6f7d8f;
+  --action: #ffb74d;
+  --on-action: #201603;
+  --focus: #6fb3ff;
+  --danger: #ff6b6b;
+  --success: #7bd88f;
+  --warning: #ffc857;
+
+  --band-0: #4fc3f7;
+  --band-1: #7bd88f;
+  --band-2: #ffc857;
+  --band-3: #ff7a8a;
+
+  --wave: #e8edf4;
+  --wave-soft: rgba(232, 237, 244, 0.55);
+  --selected: #2a3543;
+  --selected-ink: #f4f7fb;
+  --backdrop: rgba(4, 6, 9, 0.66);
+  --shadow: 0 18px 48px rgba(0, 0, 0, 0.55), 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  --shadow-menu: 0 10px 28px rgba(0, 0, 0, 0.48);
+  --toast-bg: #1b222b;
+  --scroll-thumb: #3a4859;
+  --scroll-thumb-hover: #4b5c70;
+
+  --grid-bar: rgba(232, 237, 244, 0.26);
+  --grid-beat: rgba(232, 237, 244, 0.14);
+  --grid-sub: rgba(232, 237, 244, 0.08);
+  --hover-line: rgba(232, 237, 244, 0.4);
+  --lane-master-bg: #151a21;
+  --lane-band-bg: #0e1116;
+  --lane-selected-bg: rgba(232, 237, 244, 0.025);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --canvas: #f5f4ef;
+  --surface: #ffffff;
+  --surface-2: #efede6;
+  --surface-3: #e7e4da;
+  --rule: #d8d5cb;
+  --rule-strong: #bdb9ab;
+  --ink: #1b1f24;
+  --muted: #5e6773;
+  --muted-2: #7b8490;
+  --action: #b26a00;
+  --on-action: #ffffff;
+  --focus: #0b62c4;
+  --danger: #c62828;
+  --success: #2e7d32;
+  --warning: #a85f00;
+
+  --band-0: #4fc3f7;
+  --band-1: #7bd88f;
+  --band-2: #ffc857;
+  --band-3: #ff7a8a;
+
+  --wave: #232a33;
+  --wave-soft: rgba(35, 42, 51, 0.55);
+  --selected: #e2dfd5;
+  --selected-ink: #12161b;
+  --backdrop: rgba(28, 26, 20, 0.38);
+  --shadow: 0 18px 48px rgba(30, 28, 22, 0.18), 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  --shadow-menu: 0 10px 28px rgba(30, 28, 22, 0.16);
+  --toast-bg: #ffffff;
+  --scroll-thumb: #c7c3b6;
+  --scroll-thumb-hover: #aaa597;
+
+  --grid-bar: rgba(27, 31, 36, 0.24);
+  --grid-beat: rgba(27, 31, 36, 0.13);
+  --grid-sub: rgba(27, 31, 36, 0.07);
+  --hover-line: rgba(27, 31, 36, 0.42);
+  --lane-master-bg: #ffffff;
+  --lane-band-bg: #f5f4ef;
+  --lane-selected-bg: rgba(27, 31, 36, 0.035);
+}
+
+:root {
+  --font-ui: 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'Cascadia Mono', 'Consolas', ui-monospace, monospace;
+
+  --fs-xs: 0.7857rem;   /* 11px @ 14px root */
+  --fs-sm: 0.8571rem;   /* 12px */
+  --fs-base: 0.9286rem; /* 13px */
+  --fs-md: 1.0714rem;   /* 15px */
+  --fs-lg: 1.4286rem;   /* 20px */
+
+  --lane-head-w: calc(96px * var(--scale, 1));
+  --header-h: calc(48px * var(--scale, 1));
+  --transport-h: calc(56px * var(--scale, 1));
+  --ruler-h: calc(30px * var(--scale, 1));
+  --status-h: calc(28px * var(--scale, 1));
+  --banner-h: calc(42px * var(--scale, 1));
+
+  --radius-btn: 6px;
+  --radius-panel: 10px;
+  --dur: 140ms;
+  --dur-slow: 160ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
