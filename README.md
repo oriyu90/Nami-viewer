@@ -9,6 +9,10 @@ Results are exported as CSV. It doubles as a simple music player.
 - Portable: a single executable, no installer
 - Japanese / English, dark / light theme, UI scale 80–150%
 
+**Author:** Yuki_Orita (折田悠希 / おりたゆうき) ·
+**Repository:** https://github.com/oriyu90/Nami-viewer ·
+**Website:** https://studio-rizi.pages.dev/projects/nami-viewer/
+
 ---
 
 ## 1. Requirements

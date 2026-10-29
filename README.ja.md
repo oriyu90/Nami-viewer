@@ -9,6 +9,10 @@ BPM・拍子・小節開始位置から作った拍グリッドに対して、�
 - インストール不要のポータブル版（単一 exe）
 - 日本語 / English、ダーク / ホワイト、UI 倍率 80–150%
 
+**作者:** Yuki_Orita（折田悠希 / おりたゆうき） ·
+**リポジトリ:** https://github.com/oriyu90/Nami-viewer ·
+**紹介サイト:** https://studio-rizi.pages.dev/projects/nami-viewer/
+
 ---
 
 ## 1. 動作環境
